@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:request/shared/colorConst.dart';
 import 'package:request/views/screens/authScreen.dart';
+import 'package:request/views/screens/staff/newRequestScreen.dart';
 import 'package:request/views/screens/staff/staffHomeScreen.dart';
 import 'package:sizer/sizer.dart';
 
@@ -37,6 +38,10 @@ class _NonAuthRouteState extends State<NonAuthRoute> {
              case StaffHomeScreen.routeName:
               return MaterialPageRoute(
                 builder: (context) => StaffHomeScreen(),);
+              break;
+             case NewRequestScreen.routeName:
+              return MaterialPageRoute(
+                builder: (context) => NewRequestScreen(),);
               break;
             default:
             return null;
