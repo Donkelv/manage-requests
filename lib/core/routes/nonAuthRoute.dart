@@ -1,0 +1,36 @@
+import 'package:flutter/material.dart';
+import 'package:request/shared/colorConst.dart';
+import 'package:request/views/screens/authScreen.dart';
+import 'package:sizer/sizer.dart';
+
+
+
+class NonAuthRoute extends StatefulWidget {
+  const NonAuthRoute({ Key key }) : super(key: key);
+
+  @override
+  _NonAuthRouteState createState() => _NonAuthRouteState();
+}
+
+class _NonAuthRouteState extends State<NonAuthRoute> {
+  @override
+  Widget build(BuildContext context) {
+    return Sizer(
+      builder: (BuildContext context, Orientation orientation,
+          DeviceType deviceType){
+            return MaterialApp(
+        title: "Request Portal",
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: primarySwatch,
+          primaryColor: primaryColor,
+          fontFamily: "Inter",
+        ),
+        initialRoute: AuthScreen.routeName,
+        
+      );
+          }
+      
+    );
+  }
+}
