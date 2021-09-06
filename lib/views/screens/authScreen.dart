@@ -39,6 +39,20 @@ class _AuthScreenState extends State<AuthScreen> {
                 )
               ),
             ),
+            Container(
+              height: size.height,
+              width: size.width,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: [
+                    Color.fromRGBO(0, 0, 0, 0),
+                    Color(0xFF000000),
+                  ]
+                ),
+              ),
+            )
           ],
         ),
         
