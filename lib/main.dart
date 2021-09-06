@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:request/core/routes/nonAuthRoute.dart';
 
 void main() {
@@ -10,7 +11,8 @@ void main() {
       statusBarIconBrightness: Brightness.light,
     ),
   );
-  runApp(NonAuthRoute());
+  runApp(
+    ProviderScope(child: NonAuthRoute(),),);
 }
 
 // class MyApp extends StatelessWidget {
