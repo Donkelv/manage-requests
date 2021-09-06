@@ -6,9 +6,8 @@ import 'package:request/views/screens/staff/staffHomeScreen.dart';
 import 'package:request/views/screens/staff/viewRequestScreen.dart';
 import 'package:sizer/sizer.dart';
 
-
 class AuthRoute extends StatelessWidget {
-  const AuthRoute({ Key key }) : super(key: key);
+  const AuthRoute({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

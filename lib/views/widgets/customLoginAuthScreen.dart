@@ -86,7 +86,9 @@ class _CustomLoginAuthScreenState extends State<CustomLoginAuthScreen> {
               alignment: Alignment.center,
               child: TextButton(
                 onPressed: () {
-                  context.read(authScreenProvider.notifier).authScreenState(true);
+                  context
+                      .read(authScreenProvider.notifier)
+                      .authScreenState(true);
                 },
                 child: Text(
                   "Or sign up",

@@ -7,16 +7,14 @@ import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
 
 class Auth extends StatelessWidget {
-  const Auth({ Key key }) : super(key: key);
+  const Auth({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Consumer(
-      builder: (BuildContext context,
-                  T Function<T>(ProviderBase<Object, T>) watch, Widget child
-    ){
-      if(watch(authState).data.value != null){
-        if(watch(authState).data.value.email == "kevinohiro@gmail.com"){
+    return Consumer(builder: (BuildContext context,
+        T Function<T>(ProviderBase<Object, T>) watch, Widget child) {
+      if (watch(authState).data.value != null) {
+        if (watch(authState).data.value.email == "kevinohiro@gmail.com") {
           return AuthRoute();
         } else {
           return AuthRoute();
@@ -24,8 +22,6 @@ class Auth extends StatelessWidget {
       } else {
         return NonAuthRoute();
       }
-      
-    }
-    );
+    });
   }
 }
