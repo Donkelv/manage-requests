@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:request/shared/imageConst.dart';
 import 'package:request/shared/themeConst.dart';
+import 'package:request/views/screens/staff/staffHomeScreen.dart';
 import 'package:request/views/widgets/customGoogleAuthBtn.dart';
 import 'package:sizer/sizer.dart';
 
@@ -73,12 +74,12 @@ class _AuthScreenState extends State<AuthScreen> {
                       ),
                       CustomGoogleAuthBtn(
                         function: (){
-
+                          Navigator.pushNamed(context, StaffHomeScreen.routeName);
                         },
                       ),
                       SizedBox(
                         height: 5.0.h,
-                      )
+                      ),
                     ],
                   ),
                 ),
