@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:request/core/notifier/provider.dart';
 import 'package:request/shared/colorConst.dart';
 import 'package:request/shared/themeConst.dart';
 import 'package:request/views/widgets/customtextField.dart';
 import 'package:sizer/sizer.dart';
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'customBtnWidg.dart';
 
 class CustomSignupAuthScreen extends StatefulWidget {
@@ -95,7 +96,9 @@ class _CustomSignupAuthScreenState extends State<CustomSignupAuthScreen> {
             Align(
               alignment: Alignment.center,
               child: TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  context.read(authScreenProvider.notifier).authScreenState(false);
+                },
                 child: Text(
                   "Or Login",
                   style: CustomTheme.smallText(context).copyWith(
