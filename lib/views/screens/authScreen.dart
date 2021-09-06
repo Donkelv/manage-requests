@@ -57,24 +57,30 @@ class _AuthScreenState extends State<AuthScreen> {
               ),
               child: Align(
                 alignment: Alignment.bottomCenter,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Staff Request Portal", textAlign: TextAlign.start, style: CustomTheme.largeText(context).copyWith(color: Colors.white, fontWeight: FontWeight.w700),),
-                    SizedBox(
-                      height: 1.0.h,
-                    ),
-                    Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consectetur purus pulvinar dignissim ut imperdiet augue quam gravida amet. Mi cras sollicitudin leo dui.", softWrap: true, textAlign: TextAlign.start, style: CustomTheme.normalText(context).copyWith(fontWeight: FontWeight.w400, color: Colors.white),),
-                    SizedBox(
-                      height: 5.0.h,
-                    ),
-                    CustomGoogleAuthBtn(
-                      function: (){
+                child: Padding(
+                  padding:  EdgeInsets.symmetric(horizontal: 5.0.w),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Staff Request Portal", textAlign: TextAlign.start, style: CustomTheme.largeText(context).copyWith(color: Colors.white, fontWeight: FontWeight.w700),),
+                      SizedBox(
+                        height: 1.0.h,
+                      ),
+                      Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consectetur purus pulvinar dignissim ut imperdiet augue quam gravida amet. Mi cras sollicitudin leo dui.", softWrap: true, textAlign: TextAlign.start, style: CustomTheme.normalText(context).copyWith(fontWeight: FontWeight.w400, color: Colors.white),),
+                      SizedBox(
+                        height: 5.0.h,
+                      ),
+                      CustomGoogleAuthBtn(
+                        function: (){
 
-                      },
-                    ),
-                  ],
+                        },
+                      ),
+                      SizedBox(
+                        height: 5.0.h,
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),

@@ -26,6 +26,7 @@ class CustomGoogleAuthBtn extends StatelessWidget {
       child: Material(
         type: MaterialType.transparency,
         child: InkWell(
+          borderRadius: BorderRadius.circular(10.0),
           onTap: (){
             function.call();
           },
@@ -35,7 +36,7 @@ class CustomGoogleAuthBtn extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                WebsafeSvg.asset(ImageConst.googleIcon),
+                Image.asset(ImageConst.googleIconPng),
                 SizedBox(
                   width: 2.0.w,
                 ),
