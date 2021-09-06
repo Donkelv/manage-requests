@@ -6,6 +6,7 @@ import 'package:request/shared/imageConst.dart';
 import 'package:request/shared/requestList.dart';
 import 'package:request/shared/themeConst.dart';
 import 'package:request/views/screens/staff/newRequestScreen.dart';
+import 'package:request/views/screens/staff/viewRequestScreen.dart';
 import 'package:request/views/widgets/customRequestWidget.dart';
 import 'package:sizer/sizer.dart';
 import 'package:websafe_svg/websafe_svg.dart';
@@ -139,7 +140,7 @@ class _StaffHomeScreenState extends State<StaffHomeScreen> {
                               child: InkWell(
                                 borderRadius: BorderRadius.circular(8.0),
                                 onTap: (){
-
+                                  Navigator.pushNamed(context, ViewRequestScreen.routeName);
                                 },
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.start,

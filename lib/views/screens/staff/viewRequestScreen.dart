@@ -7,6 +7,7 @@ import 'package:sizer/sizer.dart';
 
 
 class ViewRequestScreen extends StatefulWidget {
+  static const routeName = "/viewRequestScreen";
   const ViewRequestScreen({ Key key }) : super(key: key);
 
   @override
