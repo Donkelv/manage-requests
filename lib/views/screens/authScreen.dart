@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:request/shared/imageConst.dart';
+import 'package:request/shared/themeConst.dart';
+import 'package:request/views/widgets/customGoogleAuthBtn.dart';
 import 'package:sizer/sizer.dart';
 
 class AuthScreen extends StatefulWidget {
@@ -51,6 +53,28 @@ class _AuthScreenState extends State<AuthScreen> {
                     
                     Color(0xFF000000),
                   ]
+                ),
+              ),
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("Staff Request Portal", textAlign: TextAlign.start, style: CustomTheme.largeText(context).copyWith(color: Colors.white, fontWeight: FontWeight.w700),),
+                    SizedBox(
+                      height: 1.0.h,
+                    ),
+                    Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Consectetur purus pulvinar dignissim ut imperdiet augue quam gravida amet. Mi cras sollicitudin leo dui.", softWrap: true, textAlign: TextAlign.start, style: CustomTheme.normalText(context).copyWith(fontWeight: FontWeight.w400, color: Colors.white),),
+                    SizedBox(
+                      height: 5.0.h,
+                    ),
+                    CustomGoogleAuthBtn(
+                      function: (){
+
+                      },
+                    ),
+                  ],
                 ),
               ),
             ),
