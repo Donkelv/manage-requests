@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:request/core/routes/nonAuthRoute.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:request/core/routes/route.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -16,7 +17,7 @@ void main() async {
   );
   runApp(
     ProviderScope(
-      child: NonAuthRoute(),
+      child: Auth(),
     ),
   );
 }

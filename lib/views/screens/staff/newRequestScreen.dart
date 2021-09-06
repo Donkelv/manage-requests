@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:request/core/CRUD/makeRequest.dart';
+import 'package:request/core/notifier/provider.dart';
 import 'package:request/core/utils/validator.dart';
 import 'package:request/shared/colorConst.dart';
 import 'package:request/shared/themeConst.dart';
@@ -147,15 +149,21 @@ class _NewRequestScreenState extends State<NewRequestScreen> {
                   SizedBox(
                     height: 10.0.h,
                   ),
-                  CustomBtnWidg(
-                    color: primaryColor,
-                    function: () {
-                      if(_formKey.currentState.validate()){
-                        MakeRequest().makeRequest(name.text, category, department, message.text);
-                      }
-                    },
-                    text: "Submit",
-                  )
+                  Consumer(builder: (BuildContext context,
+                      T Function<T>(ProviderBase<Object, T>) watch, Widget child){
+                        return CustomBtnWidg(
+                      color: primaryColor,
+                      function: () {
+                        
+                        if(_formKey.currentState.validate()){
+                          MakeRequest().makeRequest(name.text, category, department, message.text, context);
+                        }
+                      },
+                      text: watch(authLoadProvider) == true ? "Sending" : "Send"
+                    );
+                      })
+                     
+                
                 ],
               ),
             ),

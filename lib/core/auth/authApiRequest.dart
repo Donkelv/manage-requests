@@ -23,7 +23,7 @@ class AuthApi {
         "requests": [],
       }).then((value) {
 
-        Navigator.pushNamed(context, StaffHomeScreen.routeName).whenComplete(() => context.read(authLoadProvider.notifier).notify(false),);
+        Navigator.pushReplacementNamed(context, StaffHomeScreen.routeName).whenComplete(() => context.read(authLoadProvider.notifier).notify(false),);
         
       });
       
@@ -39,14 +39,17 @@ class AuthApi {
     }
   }
 
-  Future login(String email, String password) async {
+  Future login(String email, String password, BuildContext context) async {
     try {
+      context.read(authLoadProvider.notifier).notify(true);
       UserCredential userCredential =
           await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: email,
         password: password,
       );
+       Navigator.pushReplacementNamed(context, StaffHomeScreen.routeName).whenComplete(() => context.read(authLoadProvider.notifier).notify(false),);
     } on FirebaseAuthException catch (e) {
+      context.read(authLoadProvider.notifier).notify(false);
       if (e.code == 'user-not-found') {
         print('No user found for that email.');
       } else if (e.code == 'wrong-password') {

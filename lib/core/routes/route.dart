@@ -13,7 +13,7 @@ class Auth extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer(builder: (BuildContext context,
         T Function<T>(ProviderBase<Object, T>) watch, Widget child) {
-      if (watch(authState).data.value != null) {
+      if (watch(authState).data != null) {
         if (watch(authState).data.value.email == "kevinohiro@gmail.com") {
           return AuthRoute();
         } else {

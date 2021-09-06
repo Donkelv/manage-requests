@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:request/core/CRUD/makeRequest.dart';
 import 'package:request/core/models/requestModel.dart';
 import 'package:request/shared/colorConst.dart';
 import 'package:request/shared/imageConst.dart';
@@ -58,7 +59,7 @@ class _StaffHomeScreenState extends State<StaffHomeScreen> {
                       height: 4.0.h,
                     ),
                     Text(
-                      "Welcome Elijah",
+                      "Welcome ${MakeRequest().user.displayName}",
                       style: CustomTheme.largeText(context)
                           .copyWith(fontWeight: FontWeight.w600),
                     ),
