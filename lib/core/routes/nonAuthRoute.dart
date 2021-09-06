@@ -6,10 +6,8 @@ import 'package:request/views/screens/staff/staffHomeScreen.dart';
 import 'package:request/views/screens/staff/viewRequestScreen.dart';
 import 'package:sizer/sizer.dart';
 
-
-
 class NonAuthRoute extends StatefulWidget {
-  const NonAuthRoute({ Key key }) : super(key: key);
+  const NonAuthRoute({Key key}) : super(key: key);
 
   @override
   _NonAuthRouteState createState() => _NonAuthRouteState();
@@ -18,10 +16,9 @@ class NonAuthRoute extends StatefulWidget {
 class _NonAuthRouteState extends State<NonAuthRoute> {
   @override
   Widget build(BuildContext context) {
-    return Sizer(
-      builder: (BuildContext context, Orientation orientation,
-          DeviceType deviceType){
-            return MaterialApp(
+    return Sizer(builder:
+        (BuildContext context, Orientation orientation, DeviceType deviceType) {
+      return MaterialApp(
         title: "Request Portal",
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
@@ -30,31 +27,33 @@ class _NonAuthRouteState extends State<NonAuthRoute> {
           fontFamily: "Inter",
         ),
         initialRoute: AuthScreen.routeName,
-        onGenerateRoute: (settings){
+        onGenerateRoute: (settings) {
           switch (settings.name) {
             case AuthScreen.routeName:
               return MaterialPageRoute(
-                builder: (context) => AuthScreen(),);
+                builder: (context) => AuthScreen(),
+              );
               break;
-             case StaffHomeScreen.routeName:
+            case StaffHomeScreen.routeName:
               return MaterialPageRoute(
-                builder: (context) => StaffHomeScreen(),);
+                builder: (context) => StaffHomeScreen(),
+              );
               break;
-             case NewRequestScreen.routeName:
+            case NewRequestScreen.routeName:
               return MaterialPageRoute(
-                builder: (context) => NewRequestScreen(),);
+                builder: (context) => NewRequestScreen(),
+              );
               break;
             case ViewRequestScreen.routeName:
               return MaterialPageRoute(
-                builder: (context) => ViewRequestScreen(),);
+                builder: (context) => ViewRequestScreen(),
+              );
               break;
             default:
-            return null;
+              return null;
           }
         },
       );
-          }
-      
-    );
+    });
   }
 }

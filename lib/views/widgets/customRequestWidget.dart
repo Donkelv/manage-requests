@@ -6,13 +6,13 @@ import 'package:sizer/sizer.dart';
 
 class CustomRequestWidget extends StatelessWidget {
   final RequestModel request;
-  const CustomRequestWidget({ Key key, this.request }) : super(key: key);
+  const CustomRequestWidget({Key key, this.request}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Padding(
-      padding:  EdgeInsets.only(bottom: 2.0.h),
+      padding: EdgeInsets.only(bottom: 2.0.h),
       child: Container(
         width: size.width,
         decoration: BoxDecoration(
@@ -26,7 +26,7 @@ class CustomRequestWidget extends StatelessWidget {
           ],
         ),
         child: Padding(
-          padding:  EdgeInsets.symmetric(horizontal:4.0.w, vertical: 2.0.h),
+          padding: EdgeInsets.symmetric(horizontal: 4.0.w, vertical: 2.0.h),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -35,11 +35,29 @@ class CustomRequestWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Text(request.title, style: CustomTheme.normalText(context).copyWith(fontWeight: FontWeight.w500, color: Color(0xFF666666),),),
-                  Text(request.status, style: CustomTheme.smallText(context).copyWith(fontWeight: FontWeight.w400, color: Color(0xFF666666),),),
+                  Text(
+                    request.title,
+                    style: CustomTheme.normalText(context).copyWith(
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xFF666666),
+                    ),
+                  ),
+                  Text(
+                    request.status,
+                    style: CustomTheme.smallText(context).copyWith(
+                      fontWeight: FontWeight.w400,
+                      color: Color(0xFF666666),
+                    ),
+                  ),
                 ],
               ),
-              Text(request.date, style: CustomTheme.smallText(context).copyWith(fontWeight: FontWeight.w400, color: Color(0xFF999999),),),
+              Text(
+                request.date,
+                style: CustomTheme.smallText(context).copyWith(
+                  fontWeight: FontWeight.w400,
+                  color: Color(0xFF999999),
+                ),
+              ),
             ],
           ),
         ),

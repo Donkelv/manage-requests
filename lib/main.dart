@@ -12,7 +12,10 @@ void main() {
     ),
   );
   runApp(
-    ProviderScope(child: NonAuthRoute(),),);
+    ProviderScope(
+      child: NonAuthRoute(),
+    ),
+  );
 }
 
 // class MyApp extends StatelessWidget {
@@ -28,4 +31,3 @@ void main() {
 //     );
 //   }
 // }
-
