@@ -42,9 +42,7 @@ class _CustomDropDownWidgState extends State<CustomDropDownWidg> {
               padding: EdgeInsets.only(left: 5.0.w),
               child: Text(
                 "${widget.hintText}",
-                style: CustomTheme.normalText(context).copyWith(
-                  color: Color(0xFFC4C4C4),
-                ),
+                style: CustomTheme.normalText(context).copyWith(fontWeight: FontWeight.w500, color: Color(0xFF666666),),
               ),
             ),
             icon: Padding(

@@ -72,16 +72,54 @@ class _NewRequestScreenState extends State<NewRequestScreen> {
               SizedBox(
                 height: 4.0.h,
               ),
-              CustomTextField(controller: name, function: (value){
+              CustomTextField(
+                controller: name, 
+                hintText: "Name",
+                function: (value){
                 
               },),
 
               SizedBox(
-                height: 1.0.h,
+                height: 3.0.h,
               ),
               CustomDropDownWidg(
                 hintText: "Category",
-              )
+                selectedValue: category,
+                onChanged: (String value){
+                  setState(() {
+                    category = value;               
+                  });
+                },
+                list: categoryList,
+              ),
+              SizedBox(
+                height: 3.0.h,
+              ),
+              CustomDropDownWidg(
+                hintText: "Department",
+                selectedValue: department,
+                onChanged: (String value){
+                  setState(() {
+                    department = value;               
+                  });
+                },
+                list: departmentList,
+              ),
+              SizedBox(
+                height: 4.0.h,
+              ),
+              CustomTextField(
+                controller: message, 
+                hintText: "Message",
+                minLine: 10,
+                maxLine: 10,
+                padding: true,
+                function: (value){
+                
+              },),
+              SizedBox(
+                height: 4.0.h,
+              ),
             ],
           ),
         ),
