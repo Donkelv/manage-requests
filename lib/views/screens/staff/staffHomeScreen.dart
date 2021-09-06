@@ -102,7 +102,7 @@ class _StaffHomeScreenState extends State<StaffHomeScreen> {
                                           borderRadius: BorderRadius.circular(8.0)
                                         ),
                                         child: Center(
-                                          child: WebsafeSvg.asset(ImageConst.request)
+                                          child: WebsafeSvg.asset(ImageConst.request, height: 6.0.h)
                                         ),
                                       ),
                                     ),
@@ -156,7 +156,7 @@ class _StaffHomeScreenState extends State<StaffHomeScreen> {
                                         width: size.width * 0.4,
                                         height: 10.0.h,
                                         child: Center(
-                                          child: WebsafeSvg.asset(ImageConst.request)
+                                          child: WebsafeSvg.asset(ImageConst.request, height: 6.0.h)
                                         ),
                                       ),
                                     ),
