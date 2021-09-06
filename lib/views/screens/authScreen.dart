@@ -9,6 +9,7 @@ import 'package:request/shared/themeConst.dart';
 import 'package:request/views/screens/staff/staffHomeScreen.dart';
 import 'package:request/views/widgets/customBtnWidg.dart';
 import 'package:request/views/widgets/customGoogleAuthBtn.dart';
+import 'package:request/views/widgets/customLoadingWidget.dart';
 import 'package:request/views/widgets/customLoginAuthScreen.dart';
 import 'package:request/views/widgets/customSignUpAuthScreen.dart';
 import 'package:request/views/widgets/customtextField.dart';
@@ -38,39 +39,54 @@ class _AuthScreenState extends State<AuthScreen> {
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        body: Stack(
-          children: [
-            Container(
-              width: size.width,
-              height: size.height,
-              decoration: BoxDecoration(
-                  image: DecorationImage(
-                image: AssetImage(ImageConst.welcome),
-                fit: BoxFit.contain,
-              )),
+        body: Container(
+          height: size.height,
+          width: size.width,
+          child: SingleChildScrollView(
+            child: Stack(
+              children: [
+                Container(
+                  width: size.width,
+                  height: size.height,
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                    image: AssetImage(ImageConst.welcome, ),
+                    fit: BoxFit.contain,
+                  ),),
+                ),
+                Container(
+                  height: size.height,
+                  width: size.width,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        colors: [
+                          Color.fromRGBO(0, 0, 0, 0),
+                          Color(0xFF000000),
+                        ]),
+                  ),
+                  child: Consumer(builder: (BuildContext context,
+                      T Function<T>(ProviderBase<Object, T>) watch, Widget child) {
+                    if (watch(authScreenProvider) == false) {
+                      return CustomLoginAuthScreen();
+                    } else {
+                      return CustomSignupAuthScreen();
+                    }
+                  }),
+                ),
+                Positioned.fill(
+                  child: Consumer(builder: (BuildContext context,
+                      T Function<T>(ProviderBase<Object, T>) watch, Widget child){
+                        return Visibility(
+                          visible: watch(authLoadProvider) ?? true,
+                          child: CustomLoaderWidget(),
+                        );
+                      })
+                ),
+              ],
             ),
-            Container(
-              height: size.height,
-              width: size.width,
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [
-                      Color.fromRGBO(0, 0, 0, 0),
-                      Color(0xFF000000),
-                    ]),
-              ),
-              child: Consumer(builder: (BuildContext context,
-                  T Function<T>(ProviderBase<Object, T>) watch, Widget child) {
-                if (watch(authScreenProvider) == false) {
-                  return CustomLoginAuthScreen();
-                } else {
-                  return CustomSignupAuthScreen();
-                }
-              }),
-            ),
-          ],
+          ),
         ),
       ),
     );

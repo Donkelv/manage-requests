@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:request/core/auth/authApiRequest.dart';
 import 'package:request/core/notifier/provider.dart';
 import 'package:request/shared/colorConst.dart';
 import 'package:request/shared/themeConst.dart';
@@ -91,7 +92,9 @@ class _CustomSignupAuthScreenState extends State<CustomSignupAuthScreen> {
             CustomBtnWidg(
               color: primaryColor,
               text: "Sign up",
-              function: () {},
+              function: () {
+                AuthApi().createAccount(username.text, email.text, passsword.text, context);
+              },
             ),
             Align(
               alignment: Alignment.center,
