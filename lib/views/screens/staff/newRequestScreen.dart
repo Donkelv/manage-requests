@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:request/core/CRUD/makeRequest.dart';
+import 'package:request/core/utils/validator.dart';
 import 'package:request/shared/colorConst.dart';
 import 'package:request/shared/themeConst.dart';
 import 'package:request/views/widgets/customBtnWidg.dart';
@@ -46,6 +48,8 @@ class _NewRequestScreenState extends State<NewRequestScreen> {
     super.dispose();
   }
 
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -85,64 +89,75 @@ class _NewRequestScreenState extends State<NewRequestScreen> {
         body: Padding(
           padding: EdgeInsets.symmetric(horizontal: 5.0.w),
           child: SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: 4.0.h,
-                ),
-                CustomTextField(
-                  controller: name,
-                  hintText: "Name",
-                  function: (value) {},
-                ),
-                SizedBox(
-                  height: 3.0.h,
-                ),
-                CustomDropDownWidg(
-                  hintText: "Category",
-                  selectedValue: category,
-                  onChanged: (String value) {
-                    setState(() {
-                      category = value;
-                    });
-                  },
-                  list: categoryList,
-                ),
-                SizedBox(
-                  height: 3.0.h,
-                ),
-                CustomDropDownWidg(
-                  hintText: "Department",
-                  selectedValue: department,
-                  onChanged: (String value) {
-                    setState(() {
-                      department = value;
-                    });
-                  },
-                  list: departmentList,
-                ),
-                SizedBox(
-                  height: 4.0.h,
-                ),
-                CustomTextField(
-                  controller: message,
-                  hintText: "Message",
-                  minLine: 10,
-                  maxLine: 10,
-                  padding: true,
-                  function: (value) {},
-                ),
-                SizedBox(
-                  height: 10.0.h,
-                ),
-                CustomBtnWidg(
-                  color: primaryColor,
-                  function: () {},
-                  text: "Submit",
-                )
-              ],
+            child: Form(
+              key: _formKey,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    height: 4.0.h,
+                  ),
+                  CustomTextField(
+                    controller: name,
+                    hintText: "Title",
+                    function: (value) {
+                      return Validator().validateEmptyField(value, "Title");
+                    },
+                  ),
+                  SizedBox(
+                    height: 3.0.h,
+                  ),
+                  CustomDropDownWidg(
+                    hintText: "Category",
+                    selectedValue: category,
+                    onChanged: (String value) {
+                      setState(() {
+                        category = value;
+                      });
+                    },
+                    list: categoryList,
+                  ),
+                  SizedBox(
+                    height: 3.0.h,
+                  ),
+                  CustomDropDownWidg(
+                    hintText: "Department",
+                    selectedValue: department,
+                    onChanged: (String value) {
+                      setState(() {
+                        department = value;
+                      });
+                    },
+                    list: departmentList,
+                  ),
+                  SizedBox(
+                    height: 4.0.h,
+                  ),
+                  CustomTextField(
+                    controller: message,
+                    hintText: "Message",
+                    minLine: 10,
+                    maxLine: 10,
+                    padding: true,
+                    function: (value) {
+                      return Validator().validateEmptyField(value, "Message");
+                    },
+                  ),
+                  SizedBox(
+                    height: 10.0.h,
+                  ),
+                  CustomBtnWidg(
+                    color: primaryColor,
+                    function: () {
+                      if(_formKey.currentState.validate()){
+                        MakeRequest().makeRequest(name.text, category, department, message.text);
+                      }
+                    },
+                    text: "Submit",
+                  )
+                ],
+              ),
             ),
           ),
         ),

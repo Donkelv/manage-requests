@@ -18,13 +18,13 @@ class AuthApi {
       );
       print(userCredential.user.uid);
       userCredential.user.updateDisplayName(username);
-      firestore.collection("users").add({
+      firestore.collection("users").doc(userCredential.user.uid).set({
         "username": username,
         "requests": [],
       }).then((value) {
 
-        Navigator.pushNamed(context, StaffHomeScreen.routeName);
-        context.read(authLoadProvider.notifier).notify(false);
+        Navigator.pushNamed(context, StaffHomeScreen.routeName).whenComplete(() => context.read(authLoadProvider.notifier).notify(false),);
+        
       });
       
     } on FirebaseAuthException catch (e) {
