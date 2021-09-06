@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:request/shared/colorConst.dart';
 import 'package:request/shared/imageConst.dart';
+import 'package:request/shared/requestList.dart';
 import 'package:request/shared/themeConst.dart';
+import 'package:request/views/widgets/customRequestWidget.dart';
 import 'package:sizer/sizer.dart';
 import 'package:websafe_svg/websafe_svg.dart';
 
@@ -179,8 +181,11 @@ class _StaffHomeScreenState extends State<StaffHomeScreen> {
                     height: 2.0.h,
                   ),
                   ListView.builder(
-                    itemCount: ,
-                    itemBuilder: itemBuilder,
+                    shrinkWrap: true,
+                    itemCount: requestList.length,
+                    itemBuilder: (context, index){
+                      return CustomRequestWidget(request: requestList[index],);
+                    },
                   ),
                 ],
               ),
