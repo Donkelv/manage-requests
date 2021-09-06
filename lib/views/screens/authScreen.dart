@@ -48,11 +48,13 @@ class _AuthScreenState extends State<AuthScreen> {
                   end: Alignment.bottomCenter,
                   colors: [
                     Color.fromRGBO(0, 0, 0, 0),
+                    
                     Color(0xFF000000),
                   ]
                 ),
               ),
-            )
+            ),
+            
           ],
         ),
         
