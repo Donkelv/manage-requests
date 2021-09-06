@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:request/shared/colorConst.dart';
 import 'package:request/shared/themeConst.dart';
+import 'package:request/views/widgets/customBtnWidg.dart';
 import 'package:request/views/widgets/customdropdownWidg.dart';
 import 'package:request/views/widgets/customtextField.dart';
 import 'package:sizer/sizer.dart';
@@ -120,6 +122,13 @@ class _NewRequestScreenState extends State<NewRequestScreen> {
               SizedBox(
                 height: 4.0.h,
               ),
+              CustomBtnWidg(
+                color: primaryColor,
+                function: (){
+
+                },
+                text: "Submit",
+              )
             ],
           ),
         ),
