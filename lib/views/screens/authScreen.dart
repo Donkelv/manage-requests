@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:request/core/auth/googleSignIn.dart';
+import 'package:request/shared/colorConst.dart';
 import 'package:request/shared/imageConst.dart';
 import 'package:request/shared/themeConst.dart';
 import 'package:request/views/screens/staff/staffHomeScreen.dart';
+import 'package:request/views/widgets/customBtnWidg.dart';
 import 'package:request/views/widgets/customGoogleAuthBtn.dart';
+import 'package:request/views/widgets/customtextField.dart';
 import 'package:sizer/sizer.dart';
 
 class AuthScreen extends StatefulWidget {
@@ -15,6 +19,23 @@ class AuthScreen extends StatefulWidget {
 }
 
 class _AuthScreenState extends State<AuthScreen> {
+  TextEditingController email;
+  TextEditingController passsword;
+
+  @override
+  void initState() { 
+    super.initState();
+    email = TextEditingController();
+    passsword = TextEditingController();
+  }
+
+
+  @override
+  void dispose() { 
+    email.dispose();
+    passsword.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -72,11 +93,40 @@ class _AuthScreenState extends State<AuthScreen> {
                       SizedBox(
                         height: 5.0.h,
                       ),
-                      CustomGoogleAuthBtn(
+                      CustomTextField(
+                        controller: email,
+                        function: (String value){},
+                        hintText: "Email",
+                      ),
+                      SizedBox(
+                        height: 3.0.h,
+                      ),
+                      CustomTextField(
+                        controller: passsword,
+                        function: (String value){},
+                        hintText: "Password",
+                      ),
+                      SizedBox(
+                        height: 5.0.h,
+                      ),
+                      CustomBtnWidg(
+                        color: primaryColor,
+                        text: "Login",
                         function: (){
-                          Navigator.pushNamed(context, StaffHomeScreen.routeName);
+
                         },
                       ),
+                      Align(
+                        alignment: Alignment.center,
+                        child: TextButton(
+                          onPressed: (){}, 
+                          child: Text("Or sign up", style: CustomTheme.smallText(context).copyWith(color: Colors.white,),),),
+                      ),
+                      // CustomGoogleAuthBtn(
+                      //   function: (){
+                      //     Auth().signInWithGoogle(context);
+                      //   },
+                      // ),
                       SizedBox(
                         height: 5.0.h,
                       ),
