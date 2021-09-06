@@ -27,7 +27,16 @@ class _NonAuthRouteState extends State<NonAuthRoute> {
           fontFamily: "Inter",
         ),
         initialRoute: AuthScreen.routeName,
-        
+        onGenerateRoute: (settings){
+          switch (settings.name) {
+            case AuthScreen.routeName:
+              return MaterialPageRoute(
+                builder: (context) => AuthScreen(),);
+              break;
+            default:
+            return null;
+          }
+        },
       );
           }
       
