@@ -31,18 +31,23 @@ class PendingRequests extends StatelessWidget {
                           );
                         },
                       );
-        }
-        return Container(
-            color: Colors.transparent,
-            width: 25.0.w,
-            height: 25.0.w,
-            child: CircularProgressIndicator(
-              valueColor: new AlwaysStoppedAnimation<Color>(
-                Color(0xFF111111),
+        } else{
+
+        
+        return Center(
+          child: Container(
+              color: Colors.transparent,
+              width: 25.0.w,
+              height: 25.0.w,
+              child: CircularProgressIndicator(
+                valueColor: new AlwaysStoppedAnimation<Color>(
+                  Color(0xFF111111),
+                ),
+                //value: 4.0,
               ),
-              //value: 4.0,
             ),
-          );
+        );
+        }
       },
        
     );

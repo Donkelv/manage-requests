@@ -230,26 +230,33 @@ class _StaffHomeScreenState extends State<StaffHomeScreen> {
                       height: 2.0.h,
                     ),
                     FutureBuilder(
-      future: GetRequest().getAllRequest5(),
-      builder: (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot){
+      future: FirebaseFirestore.instance.collection('requests').where("uid", isEqualTo: user.uid ).get(),//GetRequest().getAllRequest5(),
+      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot){
         if(snapshot.hasError){
           return Text("Something went wrong",  textAlign: TextAlign.center, style: CustomTheme.mediumText(context).copyWith(fontWeight: FontWeight.w500,),);
-        } else if(snapshot.hasData && !snapshot.data.exists){
+        } else if(!snapshot.hasData){
           return Text("Hooray no pending requests", textAlign: TextAlign.center, style: CustomTheme.mediumText(context).copyWith(fontWeight: FontWeight.w500,),);
-        } else if(snapshot.connectionState == ConnectionState.done){
-          Map<String, dynamic> data = snapshot.data.data() as Map<String, dynamic>;
+        } else if(snapshot.connectionState == ConnectionState.done && snapshot.hasData ){
+          // List<Map<String, dynamic>> list = snapshot.data.docs.map((DocumentSnapshot doc){
+          //   return doc.data();
+          // }).toList();
+          //print(data);
+
+          final List<DocumentSnapshot> documents = snapshot.data.docs;
+          //print(documents);
           return ListView.builder(
                         physics: NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
-                        itemCount: data.length,
+                        itemCount: documents.length,
                         itemBuilder: (context, index) {
+                          print(documents[index]);
                           return CustomRequestWidget(
-                            request: data[index],
+                            request: documents[index].data(),
                           );
                         },
                       );
-        }
-        return Center(
+        } else {
+          return Center(
           child: Container(
               color: Colors.transparent,
               width: 25.0.w,
@@ -262,6 +269,8 @@ class _StaffHomeScreenState extends State<StaffHomeScreen> {
               ),
             ),
         );
+        }
+        
       },
        
     ),

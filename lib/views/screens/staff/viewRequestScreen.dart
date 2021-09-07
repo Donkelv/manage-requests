@@ -14,7 +14,7 @@ class ViewRequestScreen extends StatefulWidget {
 }
 
 class _ViewRequestScreenState extends State<ViewRequestScreen> {
-  int currentIndex;
+  int currentIndex = 0;
   PageController _pageController = PageController(initialPage: 0);
   @override
   Widget build(BuildContext context) {

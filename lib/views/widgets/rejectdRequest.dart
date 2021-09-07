@@ -21,6 +21,7 @@ class RejectdRequest extends StatelessWidget {
           return Text("Hooray no pending requests", textAlign: TextAlign.center, style: CustomTheme.mediumText(context).copyWith(fontWeight: FontWeight.w500,),);
         } else if(snapshot.connectionState == ConnectionState.done){
           Map<String, dynamic> data = snapshot.data.data() as Map<String, dynamic>;
+          
           return ListView.builder(
                         physics: NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
@@ -31,18 +32,21 @@ class RejectdRequest extends StatelessWidget {
                           );
                         },
                       );
-        }
-        return Container(
-            color: Colors.transparent,
-            width: 25.0.w,
-            height: 25.0.w,
-            child: CircularProgressIndicator(
-              valueColor: new AlwaysStoppedAnimation<Color>(
-                Color(0xFF111111),
+        } else {
+        return Center(
+          child: Container(
+              color: Colors.transparent,
+              width: 25.0.w,
+              height: 25.0.w,
+              child: CircularProgressIndicator(
+                valueColor: new AlwaysStoppedAnimation<Color>(
+                  Color(0xFF111111),
+                ),
+                //value: 4.0,
               ),
-              //value: 4.0,
             ),
-          );
+        );
+        }
       },
        
     );
