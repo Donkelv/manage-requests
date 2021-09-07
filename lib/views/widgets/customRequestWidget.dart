@@ -4,10 +4,13 @@ import 'package:request/core/models/requestModel.dart';
 import 'package:request/shared/requestList.dart';
 import 'package:request/shared/themeConst.dart';
 import 'package:sizer/sizer.dart';
+import 'package:intl/intl.dart';
 
 class CustomRequestWidget extends StatelessWidget {
   final  request;
-  const CustomRequestWidget({Key key, this.request}) : super(key: key);
+  CustomRequestWidget({Key key, this.request}) : super(key: key);
+
+DateFormat dateFormat = DateFormat('y-MM-d');
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +56,7 @@ class CustomRequestWidget extends StatelessWidget {
                 ],
               ),
               Text(
-                "request.date,",
+                "${dateFormat.format(request['date'].toDate())}",
                 style: CustomTheme.smallText(context).copyWith(
                   fontWeight: FontWeight.w400,
                   color: Color(0xFF999999),
