@@ -7,24 +7,24 @@ import 'package:request/views/widgets/customRequestWidget.dart';
 import 'package:sizer/sizer.dart';
 
 
-class AdminRejectedReq extends StatelessWidget {
-  const AdminRejectedReq({ Key key }) : super(key: key);
+
+class AdminAcceptedReq extends StatelessWidget {
+  const AdminAcceptedReq({ Key key }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
       future: reference
     
-    .where("status", isEqualTo: "Rejected")
+    .where("status", isEqualTo: "Approved")
     .get(),
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot){
         if(snapshot.hasError){
           return Text("Something went wrong",  textAlign: TextAlign.center, style: CustomTheme.mediumText(context).copyWith(fontWeight: FontWeight.w500,),);
         } else if(!snapshot.hasData){
-          return Text("Hooray no Rejected requests", textAlign: TextAlign.center, style: CustomTheme.mediumText(context).copyWith(fontWeight: FontWeight.w500,),);
-        } else if(snapshot.connectionState == ConnectionState.done){
+          return Text("Hooray no Approved requests", textAlign: TextAlign.center, style: CustomTheme.mediumText(context).copyWith(fontWeight: FontWeight.w500,),);
+        } else if(snapshot.connectionState == ConnectionState.done && snapshot.hasData){
           final List<DocumentSnapshot> documents = snapshot.data.docs;
-          
           return ListView.builder(
                         physics: NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
@@ -32,11 +32,10 @@ class AdminRejectedReq extends StatelessWidget {
                         itemBuilder: (context, index) {
                           return CustomRequestWidget(
                             request: documents[index].data(),
-                            level: "admin",
                           );
                         },
                       );
-        } else {
+        } else{
         return Center(
           child: Container(
               color: Colors.transparent,
