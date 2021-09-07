@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:request/shared/colorConst.dart';
+import 'package:request/shared/reqPageViewList.dart';
 import 'package:request/shared/themeConst.dart';
 import 'package:sizer/sizer.dart';
 
@@ -77,7 +78,9 @@ class _ViewRequestScreenState extends State<ViewRequestScreen> {
                       type: MaterialType.transparency,
                       child: InkWell(
                         borderRadius: BorderRadius.circular(100.0),
-                        onTap: () {},
+                        onTap: () {
+                          _pageController.jumpToPage(0);
+                        },
                         child: Padding(
                           padding: EdgeInsets.all(10.0),
                           child: Center(
@@ -110,7 +113,9 @@ class _ViewRequestScreenState extends State<ViewRequestScreen> {
                       type: MaterialType.transparency,
                       child: InkWell(
                         borderRadius: BorderRadius.circular(100.0),
-                        onTap: () {},
+                        onTap: () {
+                          _pageController.jumpToPage(1);
+                        },
                         child: Padding(
                           padding: EdgeInsets.all(10.0),
                           child: Center(
@@ -130,7 +135,7 @@ class _ViewRequestScreenState extends State<ViewRequestScreen> {
                   ),
                   Container(
                     decoration: BoxDecoration(
-                        color: currentIndex == 1 ? Colors.white : primaryColor,
+                        color: currentIndex == 2 ? Colors.white : primaryColor,
                         borderRadius: BorderRadius.circular(100.0),
                         boxShadow: [
                           BoxShadow(
@@ -143,7 +148,9 @@ class _ViewRequestScreenState extends State<ViewRequestScreen> {
                       type: MaterialType.transparency,
                       child: InkWell(
                         borderRadius: BorderRadius.circular(100.0),
-                        onTap: () {},
+                        onTap: () {
+                          _pageController.jumpToPage(2);
+                        },
                         child: Padding(
                           padding: EdgeInsets.all(10.0),
                           child: Center(
@@ -162,6 +169,23 @@ class _ViewRequestScreenState extends State<ViewRequestScreen> {
                     ),
                   ),
                 ],
+              ),
+              SizedBox(
+                height: 2.0.h,
+              ),
+            
+              Expanded(
+                child: PageView.builder(
+                  controller: _pageController,
+                  onPageChanged: (int value){
+                    setState(() {
+                      currentIndex = value;                  
+                    });
+                  },
+                  itemCount: reqPageViewList.length,
+                  itemBuilder: (context, index){
+                    return reqPageViewList[index];
+                  })
               )
             ],
           ),
