@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:request/shared/adminReqPageView.dart';
 import 'package:request/shared/colorConst.dart';
 import 'package:request/shared/themeConst.dart';
 import 'package:sizer/sizer.dart';
@@ -182,9 +183,12 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
                       currentIndex = value;                  
                     });
                   },
-
-                  itemBuilder: )
-              )
+                  itemCount: adminReqPageViewList.length,
+                  itemBuilder: (context, index){
+                    return adminReqPageViewList[index];
+                  }
+                ),
+              ),
             ],
           ),
         ),

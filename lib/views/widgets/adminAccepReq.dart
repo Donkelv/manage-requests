@@ -32,6 +32,7 @@ class AdminAcceptedReq extends StatelessWidget {
                         itemBuilder: (context, index) {
                           return CustomRequestWidget(
                             request: documents[index].data(),
+                            level: "admin",
                           );
                         },
                       );
