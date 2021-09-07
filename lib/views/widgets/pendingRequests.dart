@@ -13,21 +13,24 @@ class PendingRequests extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: GetRequest().getPendingRequests(),
-      builder: (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot){
+      future: reference
+    .where("uid", isEqualTo: user.uid )
+    .where("status", isEqualTo: "pending")
+    .get(),
+      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot){
         if(snapshot.hasError){
           return Text("Something went wrong",  textAlign: TextAlign.center, style: CustomTheme.mediumText(context).copyWith(fontWeight: FontWeight.w500,),);
-        } else if(snapshot.hasData && !snapshot.data.exists){
+        } else if(!snapshot.hasData){
           return Text("Hooray no pending requests", textAlign: TextAlign.center, style: CustomTheme.mediumText(context).copyWith(fontWeight: FontWeight.w500,),);
         } else if(snapshot.connectionState == ConnectionState.done){
-          Map<String, dynamic> data = snapshot.data.data() as Map<String, dynamic>;
+          final List<DocumentSnapshot> documents = snapshot.data.docs;
           return ListView.builder(
                         physics: NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
-                        itemCount: data.length,
+                        itemCount: documents.length,
                         itemBuilder: (context, index) {
                           return CustomRequestWidget(
-                            request: data[index],
+                            request: documents[index].data(),
                           );
                         },
                       );

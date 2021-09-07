@@ -5,28 +5,30 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 User user = FirebaseAuth.instance.currentUser;
+
+CollectionReference reference = FirebaseFirestore.instance.collection("requests");
 class GetRequest{
 
-  CollectionReference reference = FirebaseFirestore.instance.collection("requests");
+  
   
 
-  getFailedRequests() async{
-   await  reference
+  getRejectedRequests() {
+    reference
     .where("uid", isEqualTo: user.uid )
-    .where("status", isEqualTo: "Failed")
+    .where("status", isEqualTo: "Rejected")
     .get();
   }
 
 
-  getApprovedRequests()async{
-    await reference
+  getApprovedRequests(){
+     reference
     .where("uid", isEqualTo: user.uid )
     .where("status", isEqualTo: "Approved")
     .get();
   }
 
-  getPendingRequests()async{
-    await reference
+  getPendingRequests(){
+     reference
     .where("uid", isEqualTo: user.uid )
     .where("status", isEqualTo: "pending")
     .get();

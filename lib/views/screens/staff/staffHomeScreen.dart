@@ -230,12 +230,12 @@ class _StaffHomeScreenState extends State<StaffHomeScreen> {
                       height: 2.0.h,
                     ),
                     FutureBuilder(
-      future: FirebaseFirestore.instance.collection('requests').where("uid", isEqualTo: user.uid ).get(),//GetRequest().getAllRequest5(),
+      future: FirebaseFirestore.instance.collection('requests').where("uid", isEqualTo: user.uid ).limit(5).get(),//GetRequest().getAllRequest5(),
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot){
         if(snapshot.hasError){
           return Text("Something went wrong",  textAlign: TextAlign.center, style: CustomTheme.mediumText(context).copyWith(fontWeight: FontWeight.w500,),);
         } else if(!snapshot.hasData){
-          return Text("Hooray no pending requests", textAlign: TextAlign.center, style: CustomTheme.mediumText(context).copyWith(fontWeight: FontWeight.w500,),);
+          return Text("Hooray no requests", textAlign: TextAlign.center, style: CustomTheme.mediumText(context).copyWith(fontWeight: FontWeight.w500,),);
         } else if(snapshot.connectionState == ConnectionState.done && snapshot.hasData ){
           // List<Map<String, dynamic>> list = snapshot.data.docs.map((DocumentSnapshot doc){
           //   return doc.data();
