@@ -1,9 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:request/core/notifier/provider.dart';
 import 'package:request/core/routes/authRoute.dart';
 import 'package:request/core/routes/nonAuthRoute.dart';
-import 'package:sizer/sizer.dart';
 import 'package:flutter/material.dart';
 
 class Auth extends StatelessWidget {

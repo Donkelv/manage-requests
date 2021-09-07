@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:request/shared/imageConst.dart';
 import 'package:request/shared/themeConst.dart';
 import 'package:sizer/sizer.dart';
-import 'package:websafe_svg/websafe_svg.dart';
 
 class CustomGoogleAuthBtn extends StatelessWidget {
   final Function function;

@@ -54,7 +54,6 @@ class _NewRequestScreenState extends State<NewRequestScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
 
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle(
@@ -159,7 +158,7 @@ class _NewRequestScreenState extends State<NewRequestScreen> {
                           MakeRequest().makeRequest(name.text, category, department, message.text, context);
                         }
                       },
-                      text: watch(authLoadProvider) == true ? "Sending..." : "Send"
+                      text: watch(authLoadProvider) != true ? "Sending..." : "Send"
                     );
                       })
                      

@@ -37,7 +37,7 @@ dependencies:
   cloud_firestore: ^2.5.1
   email_validator: ^2.0.1
   intl: ^0.17.0
-  expandable: ^5.0.1
+ # hive_flutter: ^1.1.0
 
 
 dev_dependencies:

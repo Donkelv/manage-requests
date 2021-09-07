@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:request/core/routes/nonAuthRoute.dart';
+//import 'package:hive_flutter/hive_flutter.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:request/core/routes/route.dart';
 
-void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+Future main() async {
+ WidgetsFlutterBinding.ensureInitialized();
+
   await Firebase.initializeApp();
+  //await Hive.initFlutter();
+  //Hive.openBox(StringConst.adminBox);
+
+
+
+ 
+  
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,

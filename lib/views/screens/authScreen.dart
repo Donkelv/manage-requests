@@ -3,17 +3,10 @@ import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:request/core/notifier/provider.dart';
 //import 'package:request/core/auth/googleSignIn.dart';
-import 'package:request/shared/colorConst.dart';
 import 'package:request/shared/imageConst.dart';
-import 'package:request/shared/themeConst.dart';
-import 'package:request/views/screens/staff/staffHomeScreen.dart';
-import 'package:request/views/widgets/customBtnWidg.dart';
-import 'package:request/views/widgets/customGoogleAuthBtn.dart';
 import 'package:request/views/widgets/customLoadingWidget.dart';
 import 'package:request/views/widgets/customLoginAuthScreen.dart';
 import 'package:request/views/widgets/customSignUpAuthScreen.dart';
-import 'package:request/views/widgets/customtextField.dart';
-import 'package:sizer/sizer.dart';
 
 class AuthScreen extends StatefulWidget {
   static const routeName = "/authscreen";
