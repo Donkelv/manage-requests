@@ -6,9 +6,11 @@ import 'package:request/shared/themeConst.dart';
 import 'package:sizer/sizer.dart';
 import 'package:intl/intl.dart';
 
+// ignore: must_be_immutable
 class CustomRequestWidget extends StatelessWidget {
   final  request;
-  CustomRequestWidget({Key key, this.request}) : super(key: key);
+  final level;
+  CustomRequestWidget({Key key, this.request, this.level}) : super(key: key);
 
 DateFormat dateFormat = DateFormat('y-MM-d');
 

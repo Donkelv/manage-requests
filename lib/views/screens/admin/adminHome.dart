@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:request/shared/colorConst.dart';
-import 'package:request/shared/reqPageViewList.dart';
 import 'package:request/shared/themeConst.dart';
 import 'package:sizer/sizer.dart';
 
-class ViewRequestScreen extends StatefulWidget {
-  static const routeName = "/viewRequestScreen";
-  const ViewRequestScreen({Key key}) : super(key: key);
+
+class AdminHomeScreen extends StatefulWidget {
+  const AdminHomeScreen({ Key key }) : super(key: key);
 
   @override
-  _ViewRequestScreenState createState() => _ViewRequestScreenState();
+  _AdminHomeScreenState createState() => _AdminHomeScreenState();
 }
 
-class _ViewRequestScreenState extends State<ViewRequestScreen> {
+class _AdminHomeScreenState extends State<AdminHomeScreen> {
   int currentIndex = 0;
   PageController _pageController = PageController(initialPage: 0);
   @override
@@ -33,17 +32,17 @@ class _ViewRequestScreenState extends State<ViewRequestScreen> {
           elevation: 0.0,
           backgroundColor: Colors.white,
           centerTitle: true,
-          leading: IconButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            icon: Icon(
-              Icons.arrow_back_ios,
-              color: Colors.black,
-            ),
-          ),
+          // leading: IconButton(
+          //   onPressed: () {
+          //     Navigator.pop(context);
+          //   },
+          //   icon: Icon(
+          //     Icons.arrow_back_ios,
+          //     color: Colors.black,
+          //   ),
+          // ),
           title: Text(
-            "View Requests",
+            "All Requests",
             style: CustomTheme.mediumText(context).copyWith(
               fontWeight: FontWeight.w600,
             ),
@@ -51,10 +50,12 @@ class _ViewRequestScreenState extends State<ViewRequestScreen> {
         ),
         backgroundColor: Colors.white,
         body: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 5.0.w),
+          padding: EdgeInsets.symmetric(
+            horizontal: 5.0.w,
+          ),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(
                 height: 4.0.h,
@@ -65,7 +66,7 @@ class _ViewRequestScreenState extends State<ViewRequestScreen> {
                 children: [
                   Container(
                     decoration: BoxDecoration(
-                        color: currentIndex == 0 ? primaryColor : Colors.white,
+                        color: currentIndex != 0 ? Colors.white : primaryColor,
                         borderRadius: BorderRadius.circular(100.0),
                         boxShadow: currentIndex != 0 ? [] : [
                           BoxShadow(
@@ -173,7 +174,6 @@ class _ViewRequestScreenState extends State<ViewRequestScreen> {
               SizedBox(
                 height: 2.0.h,
               ),
-            
               Expanded(
                 child: PageView.builder(
                   controller: _pageController,
@@ -182,10 +182,8 @@ class _ViewRequestScreenState extends State<ViewRequestScreen> {
                       currentIndex = value;                  
                     });
                   },
-                  itemCount: reqPageViewList.length,
-                  itemBuilder: (context, index){
-                    return reqPageViewList[index];
-                  })
+
+                  itemBuilder: )
               )
             ],
           ),
