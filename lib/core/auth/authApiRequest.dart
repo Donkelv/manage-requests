@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:request/core/notifier/provider.dart';
+import 'package:request/views/screens/admin/adminHome.dart';
 import 'package:request/views/screens/staff/staffHomeScreen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
@@ -47,7 +48,12 @@ class AuthApi {
         email: email,
         password: password,
       );
-       Navigator.pushReplacementNamed(context, StaffHomeScreen.routeName).whenComplete(() => context.read(authLoadProvider.notifier).notify(false),);
+      // if(email == "kevinohiro@gmail.com"){
+      //   Navigator.pushReplacementNamed(context, AdminHomeScreen.routeName).whenComplete(() => context.read(authLoadProvider.notifier).notify(false),);
+      // } else {
+      //   Navigator.pushReplacementNamed(context, StaffHomeScreen.routeName).whenComplete(() => context.read(authLoadProvider.notifier).notify(false),);
+      // }
+       
     } on FirebaseAuthException catch (e) {
       context.read(authLoadProvider.notifier).notify(false);
       if (e.code == 'user-not-found') {

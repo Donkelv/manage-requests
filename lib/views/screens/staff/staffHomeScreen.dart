@@ -1,9 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:request/core/CRUD/getRequests.dart';
 import 'package:request/core/CRUD/makeRequest.dart';
 import 'package:request/core/models/requestModel.dart';
+import 'package:request/core/notifier/provider.dart';
 import 'package:request/shared/colorConst.dart';
 import 'package:request/shared/imageConst.dart';
 import 'package:request/shared/requestList.dart';
@@ -13,6 +15,7 @@ import 'package:request/views/screens/staff/viewRequestScreen.dart';
 import 'package:request/views/widgets/customRequestWidget.dart';
 import 'package:sizer/sizer.dart';
 import 'package:websafe_svg/websafe_svg.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class StaffHomeScreen extends StatefulWidget {
   static const routeName = "/staffHomeScreen";
@@ -60,10 +63,21 @@ class _StaffHomeScreenState extends State<StaffHomeScreen> {
                     SizedBox(
                       height: 4.0.h,
                     ),
-                    Text(
-                      "Welcome ${MakeRequest().user.displayName}",
-                      style: CustomTheme.largeText(context)
-                          .copyWith(fontWeight: FontWeight.w600),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Welcome ${MakeRequest().user.displayName}",
+                          style: CustomTheme.largeText(context)
+                              .copyWith(fontWeight: FontWeight.w600),
+                        ),
+                        IconButton(
+                          icon: Icon(Icons.logout), 
+                          onPressed: () async{
+                            await FirebaseAuth.instance.signOut().then((value) => context.read(authLoadProvider.notifier).notify(false),);
+                          },),
+                      ],
                     ),
                     SizedBox(
                       height: 4.0.h,

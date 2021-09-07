@@ -7,6 +7,7 @@ import 'package:sizer/sizer.dart';
 
 
 class AdminHomeScreen extends StatefulWidget {
+  static const routeName = "/adminHome";
   const AdminHomeScreen({ Key key }) : super(key: key);
 
   @override
