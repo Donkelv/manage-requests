@@ -159,7 +159,7 @@ class _NewRequestScreenState extends State<NewRequestScreen> {
                           MakeRequest().makeRequest(name.text, category, department, message.text, context);
                         }
                       },
-                      text: watch(authLoadProvider) == true ? "Sending" : "Send"
+                      text: watch(authLoadProvider) == true ? "Sending..." : "Send"
                     );
                       })
                      

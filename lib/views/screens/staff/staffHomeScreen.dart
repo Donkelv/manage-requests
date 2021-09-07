@@ -1,5 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:request/core/CRUD/getRequests.dart';
 import 'package:request/core/CRUD/makeRequest.dart';
 import 'package:request/core/models/requestModel.dart';
 import 'package:request/shared/colorConst.dart';
@@ -227,16 +229,42 @@ class _StaffHomeScreenState extends State<StaffHomeScreen> {
                     SizedBox(
                       height: 2.0.h,
                     ),
-                    ListView.builder(
-                      physics: NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemCount: limitedCount.length,
-                      itemBuilder: (context, index) {
-                        return CustomRequestWidget(
-                          request: limitedCount[index],
-                        );
-                      },
-                    ),
+                    FutureBuilder(
+      future: GetRequest().getAllRequest5(),
+      builder: (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot){
+        if(snapshot.hasError){
+          return Text("Something went wrong",  textAlign: TextAlign.center, style: CustomTheme.mediumText(context).copyWith(fontWeight: FontWeight.w500,),);
+        } else if(snapshot.hasData && !snapshot.data.exists){
+          return Text("Hooray no pending requests", textAlign: TextAlign.center, style: CustomTheme.mediumText(context).copyWith(fontWeight: FontWeight.w500,),);
+        } else if(snapshot.connectionState == ConnectionState.done){
+          Map<String, dynamic> data = snapshot.data.data() as Map<String, dynamic>;
+          return ListView.builder(
+                        physics: NeverScrollableScrollPhysics(),
+                        shrinkWrap: true,
+                        itemCount: data.length,
+                        itemBuilder: (context, index) {
+                          return CustomRequestWidget(
+                            request: data[index],
+                          );
+                        },
+                      );
+        }
+        return Center(
+          child: Container(
+              color: Colors.transparent,
+              width: 25.0.w,
+              height: 25.0.w,
+              child: CircularProgressIndicator(
+                valueColor: new AlwaysStoppedAnimation<Color>(
+                  Color(0xFF111111),
+                ),
+                //value: 4.0,
+              ),
+            ),
+        );
+      },
+       
+    ),
                   ],
                 ),
               ),

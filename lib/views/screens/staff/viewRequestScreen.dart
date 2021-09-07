@@ -155,7 +155,7 @@ class _ViewRequestScreenState extends State<ViewRequestScreen> {
                           padding: EdgeInsets.all(10.0),
                           child: Center(
                             child: Text(
-                              "Accepted",
+                              "Approved",
                               style: CustomTheme.normalText(context).copyWith(
                                 color: currentIndex == 2
                                     ? Color(0xFF666666)

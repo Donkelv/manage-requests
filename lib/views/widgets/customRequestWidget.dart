@@ -5,7 +5,7 @@ import 'package:request/shared/themeConst.dart';
 import 'package:sizer/sizer.dart';
 
 class CustomRequestWidget extends StatelessWidget {
-  final RequestModel request;
+  final Map<String, dynamic> request;
   const CustomRequestWidget({Key key, this.request}) : super(key: key);
 
   @override
@@ -36,14 +36,14 @@ class CustomRequestWidget extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
                   Text(
-                    request.title,
+                    request['title'],
                     style: CustomTheme.normalText(context).copyWith(
                       fontWeight: FontWeight.w500,
                       color: Color(0xFF666666),
                     ),
                   ),
                   Text(
-                    request.status,
+                    request['status'],
                     style: CustomTheme.smallText(context).copyWith(
                       fontWeight: FontWeight.w400,
                       color: Color(0xFF666666),
@@ -52,7 +52,7 @@ class CustomRequestWidget extends StatelessWidget {
                 ],
               ),
               Text(
-                request.date,
+                "request.date,",
                 style: CustomTheme.smallText(context).copyWith(
                   fontWeight: FontWeight.w400,
                   color: Color(0xFF999999),

@@ -22,19 +22,8 @@ class MakeRequest{
         "message": message,
         "status": "pending",
         "date": DateTime.now(),
-      }).then((value) => Navigator.pushNamed(context, ViewRequestScreen.routeName)).whenComplete(() => context.read(authLoadProvider.notifier).notify(false),);
-      // reference.doc(user.uid).update({
-      //   "requests": FieldValue.arrayUnion([
-      //     {
-      //       "title": name,
-      //       "category": category,
-      //       "department": department,
-      //       "message": message,
-      //       "status": "pending",
-      //     }
-      //   ])
-      // }).then((value) => Navigator.pushNamed(context, ViewRequestScreen.routeName)).whenComplete(() => context.read(authLoadProvider.notifier).notify(false),);
-     // .whenComplete(() => );
+      }).then((value) => Navigator.pop(context),);
+
     } catch (e) {
       context.read(authLoadProvider.notifier).notify(false);
       print(e);
