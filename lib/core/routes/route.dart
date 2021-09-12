@@ -11,11 +11,16 @@ class Auth extends StatelessWidget {
   Widget build(BuildContext context) {
     return Consumer(builder: (BuildContext context,
         T Function<T>(ProviderBase<Object, T>) watch, Widget child) {
-      if (watch(authState).data.value != null) {
-        return AuthRoute();
-      } else {
-        return NonAuthRoute();
-      }
+          if(watch(authState) == null){
+            return NonAuthRoute();
+          } else {
+            if(watch(authState).data.value != null){
+              return AuthRoute();
+            }  else {
+              return NonAuthRoute();
+            }
+          }
+      
     });
   }
 }

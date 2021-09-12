@@ -19,12 +19,16 @@ class _CustomSignupAuthScreenState extends State<CustomSignupAuthScreen> {
   TextEditingController email;
   TextEditingController passsword;
   TextEditingController username;
+  TextEditingController firstname;
+  TextEditingController lastname;
   @override
   void initState() {
     super.initState();
     email = TextEditingController();
     passsword = TextEditingController();
     username = TextEditingController();
+    firstname = TextEditingController();
+    lastname = TextEditingController();
   }
 
   @override
@@ -32,6 +36,8 @@ class _CustomSignupAuthScreenState extends State<CustomSignupAuthScreen> {
     email.dispose();
     passsword.dispose();
     username.dispose();
+    firstname.dispose();
+    lastname.dispose();
     super.dispose();
   }
 
@@ -82,6 +88,22 @@ class _CustomSignupAuthScreenState extends State<CustomSignupAuthScreen> {
               height: 3.0.h,
             ),
             CustomTextField(
+              controller: firstname,
+              function: (String value) {},
+              hintText: "Firstname",
+            ),
+            SizedBox(
+              height: 3.0.h,
+            ),
+            CustomTextField(
+              controller: lastname,
+              function: (String value) {},
+              hintText: "Lastname",
+            ),
+            SizedBox(
+              height: 3.0.h,
+            ),
+            CustomTextField(
               controller: passsword,
               function: (String value) {},
               hintText: "Password",
@@ -93,7 +115,7 @@ class _CustomSignupAuthScreenState extends State<CustomSignupAuthScreen> {
               color: primaryColor,
               text: "Sign up",
               function: () {
-                AuthApi().createAccount(username.text, email.text, passsword.text, context);
+                AuthApi().createAccount(username.text, lastname.text, firstname.text, email.text,  passsword.text, context);
               },
             ),
             Align(

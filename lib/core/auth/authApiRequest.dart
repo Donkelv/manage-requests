@@ -9,7 +9,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class AuthApi {
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-  Future createAccount(String username, String email, String password, BuildContext context) async {
+  Future createAccount(String username, String lastname, String firstname, String email, String password, BuildContext context) async {
     try {
       context.read(authLoadProvider.notifier).notify(true);
       UserCredential userCredential =
@@ -21,6 +21,8 @@ class AuthApi {
       userCredential.user.updateDisplayName(username);
       firestore.collection("users").doc(userCredential.user.uid).set({
         "username": username,
+        "firstname": firstname,
+        "lastname": lastname,
         "requests": [],
       }).then((value) {
 
