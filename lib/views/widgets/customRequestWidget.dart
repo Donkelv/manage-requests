@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:request/core/CRUD/updateRequest.dart';
 import 'package:request/shared/themeConst.dart';
 import 'package:sizer/sizer.dart';
 import 'package:intl/intl.dart';
@@ -85,7 +86,7 @@ DateFormat dateFormat = DateFormat('y-MM-d');
                         children: [
                           TextButton(
                             onPressed: (){
-                              print(id);
+                              UpdateRequest().approveRequest(id);
                             }, 
                             child: Text("Approve", style: CustomTheme.smallText(context).copyWith(color:  Colors.green,),),),
 
@@ -93,7 +94,9 @@ DateFormat dateFormat = DateFormat('y-MM-d');
                               width: 3.0.w,
                             ),
                             TextButton(
-                            onPressed: (){}, 
+                            onPressed: (){
+                              UpdateRequest().rejectRequest(id);
+                            }, 
                             child: Text("Reject", style: CustomTheme.smallText(context).copyWith(color:  Colors.red,),),),
                         ],
                       )
