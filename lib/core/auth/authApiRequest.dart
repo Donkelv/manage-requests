@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:request/core/CRUD/getRequests.dart';
 //import 'package:hive_flutter/hive_flutter.dart';
 import 'package:request/core/notifier/provider.dart';
 import 'package:request/views/screens/staff/staffHomeScreen.dart';
@@ -45,6 +46,12 @@ class AuthApi {
   Future login(String email, String password, BuildContext context) async {
     //final admin = Hive.box(StringConst.adminBox);
     try {
+      UserCredential userCredential =
+          await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+      print(userCredential.user.uid);
       context.read(authLoadProvider.notifier).notify(true);   
     } on FirebaseAuthException catch (e) {
       context.read(authLoadProvider.notifier).notify(false);
