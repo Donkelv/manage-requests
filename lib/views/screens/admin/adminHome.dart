@@ -53,165 +53,167 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
         //   ),
         // ),
         backgroundColor: Colors.white,
-        body: Padding(
-          padding: EdgeInsets.symmetric(
-            horizontal: 5.0.w,
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                      height: 4.0.h,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Welcome Admin",
-                          style: CustomTheme.largeText(context)
-                              .copyWith(fontWeight: FontWeight.w600),
-                        ),
-                        IconButton(
-                          icon: Icon(Icons.logout), 
-                          onPressed: () async{
-                            await FirebaseAuth.instance.signOut().then((value) => context.read(authLoadProvider.notifier).notify(false),);
-                          },),
-                      ],
-                    ),
-              SizedBox(
-                height: 4.0.h,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                        color: currentIndex != 0 ? Colors.white : primaryColor,
-                        borderRadius: BorderRadius.circular(100.0),
-                        boxShadow: currentIndex != 0 ? [] : [
-                          BoxShadow(
-                            color: Color.fromRGBO(0, 0, 0, 0.08),
-                            blurRadius: 5.0,
-                            offset: Offset(0, 1),
-                          )
-                        ],),
-                    child: Material(
-                      type: MaterialType.transparency,
-                      child: InkWell(
-                        borderRadius: BorderRadius.circular(100.0),
-                        onTap: () {
-                          _pageController.jumpToPage(0);
-                        },
-                        child: Padding(
-                          padding: EdgeInsets.all(10.0),
-                          child: Center(
-                            child: Text(
-                              "Pending",
-                              style: CustomTheme.normalText(context).copyWith(
-                                color: currentIndex != 0
-                                    ? Color(0xFF666666)
-                                    : Colors.white,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ),
-                        ),
+        body: SafeArea(
+          child: Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: 5.0.w,
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                        height: 4.0.h,
                       ),
-                    ),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                        color: currentIndex != 1 ? Colors.white : primaryColor,
-                        borderRadius: BorderRadius.circular(100.0),
-                        boxShadow: currentIndex != 1 ? [] : [
-                          BoxShadow(
-                            color: Color.fromRGBO(0, 0, 0, 0.08),
-                            blurRadius: 5.0,
-                            offset: Offset(0, 1),
-                          )
-                        ]),
-                    child: Material(
-                      type: MaterialType.transparency,
-                      child: InkWell(
-                        borderRadius: BorderRadius.circular(100.0),
-                        onTap: () {
-                          _pageController.jumpToPage(1);
-                        },
-                        child: Padding(
-                          padding: EdgeInsets.all(10.0),
-                          child: Center(
-                            child: Text(
-                              "Rejected",
-                              style: CustomTheme.normalText(context).copyWith(
-                                color: currentIndex != 1
-                                    ? Color(0xFF666666)
-                                    : Colors.white,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Welcome Admin",
+                            style: CustomTheme.largeText(context)
+                                .copyWith(fontWeight: FontWeight.w600),
                           ),
-                        ),
+                          IconButton(
+                            icon: Icon(Icons.logout), 
+                            onPressed: () async{
+                              await FirebaseAuth.instance.signOut().then((value) => context.read(authLoadProvider.notifier).notify(false),);
+                            },),
+                        ],
                       ),
-                    ),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                        color: currentIndex != 2 ? Colors.white : primaryColor,
-                        borderRadius: BorderRadius.circular(100.0),
-                        boxShadow: currentIndex != 2 ? [] : [
-                          BoxShadow(
-                            color: Color.fromRGBO(0, 0, 0, 0.08),
-                            blurRadius: 5.0,
-                            offset: Offset(0, 1),
-                          )
-                        ]),
-                    child: Material(
-                      type: MaterialType.transparency,
-                      child: InkWell(
-                        borderRadius: BorderRadius.circular(100.0),
-                        onTap: () {
-                          _pageController.jumpToPage(2);
-                        },
-                        child: Padding(
-                          padding: EdgeInsets.all(10.0),
-                          child: Center(
-                            child: Text(
-                              "Approved",
-                              style: CustomTheme.normalText(context).copyWith(
-                                color: currentIndex != 2
-                                    ? Color(0xFF666666)
-                                    : Colors.white,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 2.0.h,
-              ),
-              Expanded(
-                child: PageView.builder(
-                  controller: _pageController,
-                  onPageChanged: (int value){
-                    setState(() {
-                      currentIndex = value;                  
-                    });
-                  },
-                  itemCount: adminReqPageViewList.length,
-                  itemBuilder: (context, index){
-                    return adminReqPageViewList[index];
-                  }
+                SizedBox(
+                  height: 4.0.h,
                 ),
-              ),
-            ],
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                          color: currentIndex != 0 ? Colors.white : primaryColor,
+                          borderRadius: BorderRadius.circular(100.0),
+                          boxShadow: currentIndex != 0 ? [] : [
+                            BoxShadow(
+                              color: Color.fromRGBO(0, 0, 0, 0.08),
+                              blurRadius: 5.0,
+                              offset: Offset(0, 1),
+                            )
+                          ],),
+                      child: Material(
+                        type: MaterialType.transparency,
+                        child: InkWell(
+                          borderRadius: BorderRadius.circular(100.0),
+                          onTap: () {
+                            _pageController.jumpToPage(0);
+                          },
+                          child: Padding(
+                            padding: EdgeInsets.all(10.0),
+                            child: Center(
+                              child: Text(
+                                "Pending",
+                                style: CustomTheme.normalText(context).copyWith(
+                                  color: currentIndex != 0
+                                      ? Color(0xFF666666)
+                                      : Colors.white,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                          color: currentIndex != 1 ? Colors.white : primaryColor,
+                          borderRadius: BorderRadius.circular(100.0),
+                          boxShadow: currentIndex != 1 ? [] : [
+                            BoxShadow(
+                              color: Color.fromRGBO(0, 0, 0, 0.08),
+                              blurRadius: 5.0,
+                              offset: Offset(0, 1),
+                            )
+                          ]),
+                      child: Material(
+                        type: MaterialType.transparency,
+                        child: InkWell(
+                          borderRadius: BorderRadius.circular(100.0),
+                          onTap: () {
+                            _pageController.jumpToPage(1);
+                          },
+                          child: Padding(
+                            padding: EdgeInsets.all(10.0),
+                            child: Center(
+                              child: Text(
+                                "Rejected",
+                                style: CustomTheme.normalText(context).copyWith(
+                                  color: currentIndex != 1
+                                      ? Color(0xFF666666)
+                                      : Colors.white,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                          color: currentIndex != 2 ? Colors.white : primaryColor,
+                          borderRadius: BorderRadius.circular(100.0),
+                          boxShadow: currentIndex != 2 ? [] : [
+                            BoxShadow(
+                              color: Color.fromRGBO(0, 0, 0, 0.08),
+                              blurRadius: 5.0,
+                              offset: Offset(0, 1),
+                            )
+                          ]),
+                      child: Material(
+                        type: MaterialType.transparency,
+                        child: InkWell(
+                          borderRadius: BorderRadius.circular(100.0),
+                          onTap: () {
+                            _pageController.jumpToPage(2);
+                          },
+                          child: Padding(
+                            padding: EdgeInsets.all(10.0),
+                            child: Center(
+                              child: Text(
+                                "Approved",
+                                style: CustomTheme.normalText(context).copyWith(
+                                  color: currentIndex != 2
+                                      ? Color(0xFF666666)
+                                      : Colors.white,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                SizedBox(
+                  height: 2.0.h,
+                ),
+                Expanded(
+                  child: PageView.builder(
+                    controller: _pageController,
+                    onPageChanged: (int value){
+                      setState(() {
+                        currentIndex = value;                  
+                      });
+                    },
+                    itemCount: adminReqPageViewList.length,
+                    itemBuilder: (context, index){
+                      return adminReqPageViewList[index];
+                    }
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
       ),
