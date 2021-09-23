@@ -76,7 +76,11 @@ DateFormat dateFormat = DateFormat('y-MM-d');
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                       level == "admin" && status == "pending" ? Text("${request['department']}", style: CustomTheme.smallText(context).copyWith(color: Color(0xFF666666), fontWeight: FontWeight.w500), ): SizedBox(height: 0,),
+                       level == "admin" && status == "pending" ? Text("Department: ${request['department']}", style: CustomTheme.smallText(context).copyWith(color: Color(0xFF666666), fontWeight: FontWeight.w500), ): SizedBox(height: 0,),
+                      // SizedBox(
+                      //   height: 1.0.h,
+                      // ),
+                      // level == "admin" && status == "pending" ? Text("Name: ${request['username']}", style: CustomTheme.smallText(context).copyWith(color: Color(0xFF666666), fontWeight: FontWeight.w500), ): SizedBox(height: 0,),
                       SizedBox(
                         height: 1.0.h,
                       ),

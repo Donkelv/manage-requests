@@ -15,6 +15,7 @@ class MakeRequest{
       context.read(authLoadProvider.notifier).notify(true);
       reference.doc().set({
         "uid": user.uid,
+        
         "title": name,
         "category": category,
         "department": department,
