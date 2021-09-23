@@ -41,6 +41,7 @@ class _AdminPendingReqState extends State<AdminPendingReq> {
                             request: documents[index].data(),
                             level: "admin",
                             id: documents[index].reference.id,
+                            status: "pending",
                           );
                         },
                       );

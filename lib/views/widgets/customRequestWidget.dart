@@ -6,10 +6,11 @@ import 'package:intl/intl.dart';
 
 // ignore: must_be_immutable
 class CustomRequestWidget extends StatelessWidget {
-  final   request;
+  final request;
   final level;
   final String id;
-  CustomRequestWidget({Key key, this.request, this.level, this.id}) : super(key: key);
+  final String status;
+  CustomRequestWidget({Key key, this.request, this.level, this.id, this.status}) : super(key: key);
 
 DateFormat dateFormat = DateFormat('y-MM-d');
 
@@ -79,7 +80,7 @@ DateFormat dateFormat = DateFormat('y-MM-d');
                       SizedBox(
                         height: 1.0.h,
                       ),
-                      level == "admin" ?
+                      level == "admin" && status == "pending" ?
                       Row(
                         mainAxisAlignment: MainAxisAlignment.end,
                         crossAxisAlignment: CrossAxisAlignment.center,

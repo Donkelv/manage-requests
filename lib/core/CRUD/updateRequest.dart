@@ -5,7 +5,7 @@ class UpdateRequest{
   CollectionReference reference = FirebaseFirestore.instance.collection("requests");
   approveRequest(id){
     reference.doc(id).update({
-      "status": "approve",
+      "status": "Approved",
     }).then((value) => print("user data updated"))
     .catchError((error) => print(error));
     
@@ -13,7 +13,7 @@ class UpdateRequest{
 
   rejectRequest(id){
     reference.doc(id).update({
-      "status": "reject",
+      "status": "Rejected",
     }).then((value) => print("user data updated"))
     .catchError((error) => print(error));
     
