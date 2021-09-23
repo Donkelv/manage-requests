@@ -13,7 +13,7 @@ final firebaseAuthProvider = Provider<FirebaseAuth>((ref) {
   return FirebaseAuth.instance;
 });
 
-final authState = StreamProvider<User>((ref) {
+final authState = StreamProvider.autoDispose<User>((ref) {
   return ref.watch(firebaseAuthProvider).authStateChanges();
 });
 

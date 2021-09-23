@@ -21,8 +21,8 @@ class AuthApi {
       userCredential.user.updateDisplayName(username);
       firestore.collection("users").doc(userCredential.user.uid).set({
         "username": username,
-        "firstname": firstname,
-        "lastname": lastname,
+        //"firstname": firstname,
+        //"lastname": lastname,
         "requests": [],
       }).then((value) {
 
@@ -45,17 +45,7 @@ class AuthApi {
   Future login(String email, String password, BuildContext context) async {
     //final admin = Hive.box(StringConst.adminBox);
     try {
-      context.read(authLoadProvider.notifier).notify(true);
-
-      // if(email == "kevinohiro@gmail.com"){
-        
-      //   admin.put(StringConst.adminKey, true);
-      //   //Navigator.pushReplacementNamed(context, AdminHomeScreen.routeName).whenComplete(() => context.read(authLoadProvider.notifier).notify(false),);
-      // } else {
-      //   admin.put(StringConst.adminKey, true);
-      //   //Navigator.pushReplacementNamed(context, StaffHomeScreen.routeName).whenComplete(() => context.read(authLoadProvider.notifier).notify(false),);
-      // }
-       
+      context.read(authLoadProvider.notifier).notify(true);   
     } on FirebaseAuthException catch (e) {
       context.read(authLoadProvider.notifier).notify(false);
       if (e.code == 'user-not-found') {

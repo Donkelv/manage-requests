@@ -68,7 +68,8 @@ class _StaffHomeScreenState extends State<StaffHomeScreen> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
-                          "Welcome ${MakeRequest().user.displayName}",
+                          "welome",
+                          // "Welcome ${MakeRequest().user.displayName}",
                           style: CustomTheme.largeText(context)
                               .copyWith(fontWeight: FontWeight.w600),
                         ),

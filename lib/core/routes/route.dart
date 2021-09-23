@@ -9,17 +9,23 @@ class Auth extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Consumer(builder: (BuildContext context,
+    return Consumer(
+      builder: (BuildContext context,
         T Function<T>(ProviderBase<Object, T>) watch, Widget child) {
-          if(watch(authState) == null){
-            return NonAuthRoute();
-          } else {
-            if(watch(authState).data.value != null){
-              return AuthRoute();
-            }  else {
-              return NonAuthRoute();
-            }
-          }
+          final userAuth = watch(authState);
+          return userAuth.when(
+            data: (user){
+              if(user == null){
+                return NonAuthRoute();
+              } else {
+                return AuthRoute();
+              }
+            }, 
+            loading: () => CircularProgressIndicator(), 
+            error: (error, stack) => Text('Error occured $error'),
+          );
+        
+          
       
     });
   }
