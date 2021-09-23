@@ -82,6 +82,7 @@ class _CustomLoginAuthScreenState extends State<CustomLoginAuthScreen> {
               color: primaryColor,
               text: "Login",
               function: () {
+                context.read(authLoadProvider.notifier).notify(true);   
                 AuthApi().login(email.text, passsword.text, context);
               },
             ),

@@ -7,7 +7,8 @@ import 'package:intl/intl.dart';
 class CustomRequestWidget extends StatelessWidget {
   final   request;
   final level;
-  CustomRequestWidget({Key key, this.request, this.level}) : super(key: key);
+  final String id;
+  CustomRequestWidget({Key key, this.request, this.level, this.id}) : super(key: key);
 
 DateFormat dateFormat = DateFormat('y-MM-d');
 
@@ -84,7 +85,7 @@ DateFormat dateFormat = DateFormat('y-MM-d');
                         children: [
                           TextButton(
                             onPressed: (){
-                              print(request.id);
+                              print(id);
                             }, 
                             child: Text("Approve", style: CustomTheme.smallText(context).copyWith(color:  Colors.green,),),),
 

@@ -30,14 +30,17 @@ class _AdminPendingReqState extends State<AdminPendingReq> {
           return Text("Hooray no pending requests", textAlign: TextAlign.center, style: CustomTheme.mediumText(context).copyWith(fontWeight: FontWeight.w500,),);
         } else if(snapshot.connectionState == ConnectionState.done){
           final List<DocumentSnapshot> documents = snapshot.data.docs;
+          
           return ListView.builder(
                         physics: NeverScrollableScrollPhysics(),
                         shrinkWrap: true,
                         itemCount: documents.length,
                         itemBuilder: (context, index) {
+                          
                           return CustomRequestWidget(
                             request: documents[index].data(),
                             level: "admin",
+                            id: documents[index].reference.id,
                           );
                         },
                       );

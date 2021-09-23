@@ -52,7 +52,7 @@ class AuthApi {
         password: password,
       );
       print(userCredential.user.uid);
-      context.read(authLoadProvider.notifier).notify(true);   
+      
     } on FirebaseAuthException catch (e) {
       context.read(authLoadProvider.notifier).notify(false);
       if (e.code == 'user-not-found') {
