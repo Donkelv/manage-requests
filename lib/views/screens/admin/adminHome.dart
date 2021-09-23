@@ -1,10 +1,12 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:request/core/notifier/provider.dart';
 import 'package:request/shared/adminReqPageView.dart';
 import 'package:request/shared/colorConst.dart';
 import 'package:request/shared/themeConst.dart';
 import 'package:sizer/sizer.dart';
-
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class AdminHomeScreen extends StatefulWidget {
   static const routeName = "/adminHome";
@@ -30,26 +32,26 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
         statusBarColor: Colors.transparent,
       ),
       child: Scaffold(
-        appBar: AppBar(
-          elevation: 0.0,
-          backgroundColor: Colors.green,
-          centerTitle: true,
-          // leading: IconButton(
-          //   onPressed: () {
-          //     Navigator.pop(context);
-          //   },
-          //   icon: Icon(
-          //     Icons.arrow_back_ios,
-          //     color: Colors.black,
-          //   ),
-          // ),
-          title: Text(
-            "All Requests",
-            style: CustomTheme.mediumText(context).copyWith(
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-        ),
+        // appBar: AppBar(
+        //   elevation: 0.0,
+        //   backgroundColor: Colors.green,
+        //   centerTitle: true,
+        //   // leading: IconButton(
+        //   //   onPressed: () {
+        //   //     Navigator.pop(context);
+        //   //   },
+        //   //   icon: Icon(
+        //   //     Icons.arrow_back_ios,
+        //   //     color: Colors.black,
+        //   //   ),
+        //   // ),
+        //   title: Text(
+        //     "All Requests",
+        //     style: CustomTheme.mediumText(context).copyWith(
+        //       fontWeight: FontWeight.w600,
+        //     ),
+        //   ),
+        // ),
         backgroundColor: Colors.white,
         body: Padding(
           padding: EdgeInsets.symmetric(
@@ -59,6 +61,25 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              SizedBox(
+                      height: 4.0.h,
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          "Welcome Admin",
+                          style: CustomTheme.largeText(context)
+                              .copyWith(fontWeight: FontWeight.w600),
+                        ),
+                        IconButton(
+                          icon: Icon(Icons.logout), 
+                          onPressed: () async{
+                            await FirebaseAuth.instance.signOut().then((value) => context.read(authLoadProvider.notifier).notify(false),);
+                          },),
+                      ],
+                    ),
               SizedBox(
                 height: 4.0.h,
               ),
